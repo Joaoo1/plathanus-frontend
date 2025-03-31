@@ -2,7 +2,8 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import localforage from 'localforage';
 import { ToastContainer } from 'react-toastify';
-import { Router } from './Router';
+import { AuthProvider } from './context/AuthContext';
+import { Router } from './routes';
 import theme from './styles/theme';
 import { toastStyles } from './styles/toast';
 
@@ -24,7 +25,9 @@ export function App() {
 			/>
 
 			<ChakraProvider theme={theme}>
-				<Router />
+				<AuthProvider>
+					<Router />
+				</AuthProvider>
 			</ChakraProvider>
 		</QueryClientProvider>
 	);
