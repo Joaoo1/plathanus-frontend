@@ -54,7 +54,7 @@ export const CreateNewsModal: React.FC<CreateNewsModalProps> = ({
 	};
 
 	return (
-		<BaseModal show onClickOutside={onClose}>
+		<BaseModal onClickOutside={onClose}>
 			<Flex flexDirection="column" p="6" gap="4" w="90vw" maxW="800px">
 				<Text fontSize="lg" fontWeight="bold">
 					Adicionar notícia

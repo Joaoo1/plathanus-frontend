@@ -5,17 +5,12 @@ import { useDisableScroll } from '../hooks/useDisableScroll';
 
 interface IProps {
 	onClickOutside: () => void;
-	show: boolean;
 	children: React.ReactNode;
 	considerEscAsAnOutsideClick?: boolean;
 }
 
-export const BaseModal: React.FC<IProps> = ({
-	onClickOutside,
-	children,
-	show = true,
-}) => {
-	useDisableScroll(show);
+export const BaseModal: React.FC<IProps> = ({ onClickOutside, children }) => {
+	useDisableScroll();
 	useActionOnEsc(onClickOutside);
 
 	return (
@@ -27,7 +22,6 @@ export const BaseModal: React.FC<IProps> = ({
 			position="fixed"
 			inset={0}
 			zIndex={9}
-			visibility={show ? 'visible' : 'hidden'}
 		>
 			<Box
 				onClick={e => {
