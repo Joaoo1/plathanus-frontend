@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
 			py="2"
 		>
 			<Grid
-				gridTemplateColumns={{ base: '1fr', sm: '1fr 1fr', md: '1fr 3fr 1fr' }}
+				gridTemplateColumns={{ base: '1fr', sm: '1fr auto', md: '1fr 3fr 1fr' }}
 				alignItems="center"
 				width="100%"
 				margin="0 auto"

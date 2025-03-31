@@ -46,6 +46,7 @@ export const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
 			justifyContent="space-between"
 			gap="2"
 			overflow="hidden"
+			bg="gray.800"
 		>
 			{showUpdateModal && (
 				<UpdateNewsModal
