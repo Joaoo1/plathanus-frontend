@@ -16,7 +16,7 @@ export const NewsList: React.FC = () => {
 
 		if (error) {
 			return (
-				<Text textAlign="center" fontSize="2xl" w="100%">
+				<Text textAlign="center" fontSize="2xl" w="100%" mt="10">
 					Ocorreu um erro ao buscar notícias.
 				</Text>
 			);
@@ -24,7 +24,7 @@ export const NewsList: React.FC = () => {
 
 		if (news.length === 0) {
 			return (
-				<Text textAlign="center" fontSize="2xl" w="100%">
+				<Text textAlign="center" fontSize="2xl" w="100%" mt="10">
 					Nenhum notícia encontrada.
 				</Text>
 			);
