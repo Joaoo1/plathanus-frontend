@@ -1,4 +1,4 @@
-# API Plathanus
+# Plathanus - Portal de notícias
 
 Esta é o frontend desenvolvido para o teste da Plathanus. Encontra-se disponível online clicando [aqui](https://plathanus.utamo.com.br). 
 
