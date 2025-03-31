@@ -3,10 +3,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { z } from 'zod';
-import { BaseModal } from '../../../components/BaseModal';
-import { Label } from '../../../components/Label';
-import { TextInput } from '../../../components/TextInput';
-import { useCreateNews } from '../../../hooks/api/useCreateNews';
+import { BaseModal } from '../../../../../components/BaseModal';
+import { Label } from '../../../../../components/Label';
+import { TextInput } from '../../../../../components/TextInput';
+import { useCreateNews } from '../../../../../hooks/api/useCreateNews';
 
 interface CreateNewsModalProps {
 	onClose: () => void;
