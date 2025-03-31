@@ -8,6 +8,8 @@ Considerando o app não possui funcionalidade de cadastrar usuário, para logar 
 
 **O app já consta com CI/CD configurado, portanto, qualquer alteração na branch main já irá refletir no app.**
 
+A branch main está protegida contra push direto, então, caso queira realizar alguma alteração, crie uma nova branch e abra um PR para a main. Não é necessário ninguém aprovar o PR antes de fazer o merge. 
+
 ## 💭 Tecnologias utilizadas
 Vou deixar aqui um breve resumo de algumas tecnologias utilizadas nesse projeto:
 
