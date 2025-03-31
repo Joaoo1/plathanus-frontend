@@ -13,10 +13,9 @@ export const TextInput: React.FC<TextInputProps> = ({
 	maxW,
 	maxWidth,
 	flex,
-	ref,
 	...props
 }) => (
 	<TextInputContainer maxW={maxWidth || maxW} flex={flex}>
-		<Input ref={ref} {...props} />
+		<Input {...props} />
 	</TextInputContainer>
 );

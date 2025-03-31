@@ -1,9 +1,11 @@
-import { DeleteIcon } from '@chakra-ui/icons';
-import { Box, Flex, Heading, IconButton, Text } from '@chakra-ui/react';
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
+import { Box, Flex, Heading, IconButton, Text, VStack } from '@chakra-ui/react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useDeleteNews } from '../../../hooks/api/useDeleteNews';
 import { useAuth } from '../../../hooks/context/useAuth';
 import type { News } from '../../../interfaces';
+import { UpdateNewsModal } from './UpdateNewsModal';
 
 interface NewsItemProps {
 	news: News;
@@ -11,6 +13,8 @@ interface NewsItemProps {
 
 export const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
 	const { isAuthenticated } = useAuth();
+
+	const [showUpdateModal, setShowUpdateModal] = useState(false);
 
 	const { mutate: deleteNews, isPending: isLoading } = useDeleteNews();
 
@@ -25,8 +29,19 @@ export const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
 		});
 	};
 
+	const handleUpdate = () => {
+		setShowUpdateModal(true);
+	};
+
 	return (
 		<Flex p="4" borderWidth="1px" borderRadius="md" minW="200px" maxW="400px">
+			{showUpdateModal && (
+				<UpdateNewsModal
+					onClose={() => setShowUpdateModal(false)}
+					news={news}
+				/>
+			)}
+
 			<Box>
 				<Heading fontWeight="bold" fontSize="lg">
 					{news.title}
@@ -36,7 +51,15 @@ export const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
 			</Box>
 
 			{isAuthenticated && (
-				<Box>
+				<VStack>
+					<IconButton
+						aria-label="Editar"
+						icon={<EditIcon />}
+						colorScheme="brand"
+						variant="outline"
+						isLoading={isLoading}
+						onClick={handleUpdate}
+					/>
 					<IconButton
 						aria-label="Excluir"
 						icon={<DeleteIcon />}
@@ -45,7 +68,7 @@ export const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
 						isLoading={isLoading}
 						onClick={handleDelete}
 					/>
-				</Box>
+				</VStack>
 			)}
 		</Flex>
 	);

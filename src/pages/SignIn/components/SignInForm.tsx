@@ -1,9 +1,9 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Button, Flex, Text } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { PropsWithChildren } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { Label } from '../../../components/Label';
 import { TextInput } from '../../../components/TextInput';
 import { useAuth } from '../../../hooks/context/useAuth';
 
@@ -16,12 +16,6 @@ const signInFormSchema = z.object({
 });
 
 type ILoginFormData = z.infer<typeof signInFormSchema>;
-
-const Label: React.FC<PropsWithChildren> = ({ children }) => (
-	<Text as="label" fontSize="sm" display="flex" flexDirection="column" gap={1}>
-		{children}
-	</Text>
-);
 
 export const SignInForm: React.FC = () => {
 	const { signIn, isAuthenticating } = useAuth();
