@@ -1,4 +1,4 @@
-import { Flex, Grid, Text } from '@chakra-ui/react';
+import { Grid, Text } from '@chakra-ui/react';
 import { useSearchParams } from 'react-router';
 import { Loading } from '../../../components/Loading';
 import { useFetchNews } from '../../../hooks/api/useFetchNews';
