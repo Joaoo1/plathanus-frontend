@@ -34,7 +34,16 @@ export const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
 	};
 
 	return (
-		<Flex p="4" borderWidth="1px" borderRadius="md" minW="200px" maxW="400px">
+		<Flex
+			p="4"
+			borderWidth="1px"
+			borderRadius="md"
+			minW="200px"
+			maxW="400px"
+			justifyContent="space-between"
+			gap="2"
+			overflow="hidden"
+		>
 			{showUpdateModal && (
 				<UpdateNewsModal
 					onClose={() => setShowUpdateModal(false)}

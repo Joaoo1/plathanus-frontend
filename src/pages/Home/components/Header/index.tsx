@@ -5,9 +5,11 @@ import { TextInput } from '../../../../components/TextInput';
 import { useAuth } from '../../../../hooks/context/useAuth';
 import { useDebounce } from '../../../../hooks/useDebounce';
 import { Sizes } from '../../../../styles/sizes';
+import { CreateNewsModal } from '../CreateNewsModal';
 import { useIsShrunken } from './hooks/useIsShrunken';
 
 export const Header: React.FC = () => {
+	const [showCreateModal, setShowCreateModal] = useState(false);
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const [searchQuery, setSearchQuery] = useState(
@@ -44,6 +46,10 @@ export const Header: React.FC = () => {
 			boxShadow="0px 5px 10px 1px rgba(0,0,0,0.3)"
 			transition="0.4s"
 		>
+			{showCreateModal && (
+				<CreateNewsModal onClose={() => setShowCreateModal(false)} />
+			)}
+
 			<Grid
 				gridTemplateColumns={{ base: '1fr auto', md: '1fr 3fr 1fr' }}
 				alignItems="center"
@@ -99,6 +105,16 @@ export const Header: React.FC = () => {
 							aria-label="Sair"
 							colorScheme="brand"
 							title="Sair"
+							onClick={() => setShowCreateModal(true)}
+						>
+							Adicionar
+						</Button>
+
+						<Button
+							aria-label="Sair"
+							colorScheme="brand"
+							title="Sair"
+							variant="outline"
 							onClick={signOut}
 						>
 							Sair
