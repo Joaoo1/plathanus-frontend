@@ -9,7 +9,7 @@ export const RightContainer: React.FC = () => {
 	const [showCreateModal, setShowCreateModal] = useState(false);
 
 	if (!isAuthenticated) {
-		return <div />;
+		return null;
 	}
 
 	return (

@@ -13,8 +13,14 @@ interface CreateNewsModalProps {
 }
 
 const CreateNewsFormSchema = z.object({
-	title: z.string().nonempty('Título é obrigatório'),
-	content: z.string().nonempty('Conteúdo é obrigatório'),
+	title: z
+		.string()
+		.nonempty('Título é obrigatório')
+		.max(150, 'Máximo 150 caracteres'),
+	content: z
+		.string()
+		.nonempty('Conteúdo é obrigatório')
+		.max(1000, 'Máximo 1000 caracteres'),
 });
 
 type ICreateNewsFormData = z.infer<typeof CreateNewsFormSchema>;
@@ -61,6 +67,7 @@ export const CreateNewsModal: React.FC<CreateNewsModalProps> = ({
 					<TextInput
 						isRequired
 						type="text"
+						maxLength={150}
 						placeholder="Digite o título"
 						{...register('title')}
 					/>
@@ -78,6 +85,7 @@ export const CreateNewsModal: React.FC<CreateNewsModalProps> = ({
 					</Text>
 					<TextInput
 						as="textarea"
+						maxLength={1000}
 						isRequired
 						placeholder="Digite o conteúdo da notícia"
 						type="text"

@@ -1,10 +1,12 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Grid, Text } from '@chakra-ui/react';
 import { useSearchParams } from 'react-router';
 import { Loading } from '../../../components/Loading';
 import { useFetchNews } from '../../../hooks/api/useFetchNews';
+import { useAuth } from '../../../hooks/context/useAuth';
 import { NewsItem } from './NewsItem';
 
 export const NewsList: React.FC = () => {
+	const { isAuthenticated } = useAuth();
 	const [searchParams] = useSearchParams();
 	const search = searchParams.get('search') || '';
 	const { data: news = [], isLoading, error } = useFetchNews({ search });
@@ -34,15 +36,17 @@ export const NewsList: React.FC = () => {
 	};
 
 	return (
-		<Flex
+		<Grid
 			gap="4"
-			mt="100px"
+			gridTemplateColumns={{
+				base: 'repeat(auto-fit, minmax(350px, 1fr))',
+				md: 'repeat(auto-fit, minmax(550px, 1fr))',
+			}}
+			mt={{ base: isAuthenticated ? '150px' : '100px', sm: '100px' }}
 			px="6"
 			pb="10"
-			justifyContent="center"
-			flexWrap="wrap"
 		>
 			{renderList()}
-		</Flex>
+		</Grid>
 	);
 };

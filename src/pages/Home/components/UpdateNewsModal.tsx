@@ -15,8 +15,14 @@ interface UpdateNewsModalProps {
 }
 
 const updateNewsFormSchema = z.object({
-	title: z.string().nonempty('Título é obrigatório'),
-	content: z.string().nonempty('Conteúdo é obrigatório'),
+	title: z
+		.string()
+		.nonempty('Título é obrigatório')
+		.max(150, 'Máximo 150 caracteres'),
+	content: z
+		.string()
+		.nonempty('Conteúdo é obrigatório')
+		.max(1000, 'Máximo 1000 caracteres'),
 });
 
 type IUpdateNewsFormData = z.infer<typeof updateNewsFormSchema>;
@@ -70,6 +76,7 @@ export const UpdateNewsModal: React.FC<UpdateNewsModalProps> = ({
 						type="text"
 						placeholder="Digite o título"
 						{...register('title')}
+						maxLength={150}
 					/>
 
 					{errors.title && (
@@ -89,6 +96,7 @@ export const UpdateNewsModal: React.FC<UpdateNewsModalProps> = ({
 						placeholder="Digite o conteúdo da notícia"
 						type="text"
 						{...register('content')}
+						maxLength={1000}
 					/>
 
 					{errors.content && (
