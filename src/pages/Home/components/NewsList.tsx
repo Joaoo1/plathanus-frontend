@@ -39,12 +39,14 @@ export const NewsList: React.FC = () => {
 		<Grid
 			gap="4"
 			gridTemplateColumns={{
-				base: 'repeat(auto-fit, minmax(350px, 1fr))',
+				base: 'repeat(auto-fit, minmax(250px, 1fr))',
+				sm: 'repeat(auto-fit, minmax(350px, 1fr))',
 				md: 'repeat(auto-fit, minmax(550px, 1fr))',
 			}}
 			mt={{ base: isAuthenticated ? '150px' : '100px', sm: '100px' }}
 			px="6"
 			pb="10"
+			justifyContent="center"
 		>
 			{renderList()}
 		</Grid>

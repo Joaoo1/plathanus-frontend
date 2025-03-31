@@ -16,6 +16,10 @@ export interface News extends BaseEntity {
 	authorId: string;
 }
 
+export interface NewsWithAuthor extends News {
+	authorName: string;
+}
+
 export interface DefaultApiError {
 	message: string;
 }
