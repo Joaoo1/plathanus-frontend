@@ -9,6 +9,13 @@ export interface User extends BaseEntity {
 	passwordHash: string;
 }
 
+export interface News extends BaseEntity {
+	title: string;
+	slug: string;
+	content: string;
+	authorId: string;
+}
+
 export interface DefaultApiError {
 	message: string;
 }

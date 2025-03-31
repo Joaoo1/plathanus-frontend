@@ -5,17 +5,18 @@ import { TextInputContainer } from './components/TextInputContainer';
 
 type TextInputProps = InputProps & {
 	isLoading?: boolean;
-	ref: Ref<ComponentRef<'input'>>;
+	ref?: Ref<ComponentRef<'input'>>;
 };
 
 export const TextInput: React.FC<TextInputProps> = ({
 	prefix,
 	maxW,
 	maxWidth,
+	flex,
 	ref,
 	...props
 }) => (
-	<TextInputContainer maxW={maxWidth || maxW}>
+	<TextInputContainer maxW={maxWidth || maxW} flex={flex}>
 		<Input ref={ref} {...props} />
 	</TextInputContainer>
 );
