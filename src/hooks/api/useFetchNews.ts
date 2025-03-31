@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import type { News } from '../../interfaces';
+import type { NewsWithAuthor } from '../../interfaces';
 import { api } from '../../services/api';
 
 interface FetchNewsProps {
@@ -10,7 +10,7 @@ interface FetchNewsProps {
 export const useFetchNews = (props: FetchNewsProps) => {
 	async function handler() {
 		const { search } = props || {};
-		const { data } = await api.get<News[]>('/news', {
+		const { data } = await api.get<NewsWithAuthor[]>('/news', {
 			params: { search },
 		});
 

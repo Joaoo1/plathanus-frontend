@@ -5,11 +5,12 @@ import { toast } from 'react-toastify';
 import { ConfirmModal } from '../../../components/ConfirmModal';
 import { useDeleteNews } from '../../../hooks/api/useDeleteNews';
 import { useAuth } from '../../../hooks/context/useAuth';
-import type { News } from '../../../interfaces';
+import type { NewsWithAuthor } from '../../../interfaces';
+import { formatDate } from '../../../utils/formatDate';
 import { UpdateNewsModal } from './UpdateNewsModal';
 
 interface NewsItemProps {
-	news: News;
+	news: NewsWithAuthor;
 }
 
 export const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
@@ -64,9 +65,13 @@ export const NewsItem: React.FC<NewsItemProps> = ({ news }) => {
 			)}
 
 			<Box>
-				<Heading fontWeight="bold" fontSize="lg">
+				<Heading fontWeight="bold" fontSize="xl">
 					{news.title}
 				</Heading>
+
+				<Text fontSize="sm" color="gray.500" mt="1">
+					{news.authorName} • {formatDate(news.createdAt)}
+				</Text>
 
 				<Text mt="2">{news.content}</Text>
 			</Box>
